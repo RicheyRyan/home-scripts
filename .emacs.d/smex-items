@@ -1,0 +1,53 @@
+
+;; ----- smex-history -----
+(
+ eval-buffer
+ tetris
+ web-beautify-html
+ string-insert-rectangle
+ replace-string
+ web-mode
+ web-beautify-js
+)
+
+;; ----- smex-data -----
+(
+ (package-list-packages . 1)
+ (eval-buffer . 11)
+ (gofmt . 1)
+ (web-beautify-js . 200)
+ (web-mode . 22)
+ (replace-string . 77)
+ (flush-lines . 34)
+ (package-install . 5)
+ (sass-mode . 1)
+ (calc . 1)
+ (web-mode-element-end . 1)
+ (nyan-mode . 5)
+ (indent-sexp . 1)
+ (company-elisp . 1)
+ (emacs-lisp-mode . 1)
+ (set-variable . 1)
+ (nyan-start-animation . 1)
+ (delete-window . 3)
+ (scss-mode . 2)
+ (web-beautify-html . 63)
+ (list-packages . 35)
+ (web-mode-reload . 2)
+ (customize-themes . 1)
+ (compile . 53)
+ (wl . 10)
+ (markdown-preview . 22)
+ (web-mode-buffer-indent . 10)
+ (join-line . 2)
+ (calendar . 2)
+ (cider-jack-in . 3)
+ (tetris . 2)
+ (eshell . 1)
+ (js2-mode . 2)
+ (package-menu-mark-upgrades . 1)
+ (json-mode . 2)
+ (ns-popup-font-panel . 2)
+ (wl-thread-save . 1)
+ (string-insert-rectangle . 1)
+)

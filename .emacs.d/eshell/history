@@ -1,0 +1,3 @@
+ls
+cd vodafone-templates/
+compass watch

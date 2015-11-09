@@ -1,0 +1,12 @@
+.nav__hamburger {
+    .grid{
+        margin: 80px 80px 0;
+    }
+
+    .js__accordion{
+        &__section{
+            @include calc(width, "100% + 160px");
+            margin-left: -105px;
+        }
+    }
+}

@@ -1,0 +1,100 @@
+<?php
+class ExportComponent extends Object {
+    var $components = array('Email');
+
+    function generate($options) {
+        $filename = $options['export']['name'].'_'.$options['date'].'.csv';
+        $filepath = APP.'export/'.$filename;
+
+        if (!file_exists($filepath)) {
+            if(count($options['export']['data']) > 0){
+                $this->createCSV($filename, $filepath, $options['export']['data'], $options['export']['name']);
+                $this->sendMail($options['recipients'], 'Web Content <no-reply@eachandother.com>', $filename, $filepath, null);
+            }
+        }
+
+        return file_exists($filepath);
+    }
+
+    function sendRequest($options) {
+        $body = '';
+        $export = $options['export'];
+        $request = $export['request']['NacRequest'];
+        $accountType = $request['account_type'];
+        $subject = 'NAC: '.$request['name'];
+	
+
+        $body = $body . '<p>Name: ' . $request['name'] . '</p>';
+        $body = $body . '<p>Date of birth: ' . $request['dob'] . '</p>';
+        $body = $body . '<p>Email: ' . $request['email'] . '</p>';
+        switch($accountType){
+	    case 0:
+            $body = $body . '<p>Account Type: Pay as you go</p>';
+            $body = $body . '<p>Phone: ' . $request['phone_number_payg'] . '</p>';
+            $body = $body . '<p>Last top up amount: ' . $request['top_up_amount'] . '</p>';
+            $body = $body . '<p>Last top up method: ' . $request['top_up_method'] . '</p>';
+            break;
+
+	    case 1:
+            $body = $body . '<p>Account Type: Billpay</p>';
+            $body = $body . '<p>Phone: ' . $request['phone_number_billpay'] . '</p>';
+            $body = $body . '<p>Last top up amount: ' . $request['plan_name_billpay'] . '<p>';
+            $body = $body . '<p>Last top up method: ' . $request['payment_method_billpay'] . '</strong>';
+            break;
+
+	    case 2:
+            $body = $body . '<p>Account Type: Business</p>';
+            $body = $body . '<p>Phone: ' . $request['phone_number_business'] . '</p>';
+            $body = $body . '<p>Last top up amount: ' . $request['plan_name_business'] . '</p>';
+            $body = $body . '<p>Last top up method: ' . $request['payment_method_business'] . '</p>';
+            break;
+        }
+        $body = $body . '<p>Manufacturer: ' . $request['manufacturer'] . '</p>';
+        if(isset($request['phone_model'])){
+            $body = $body . '<p>Model: ' . $request['phone_model'] . '</p>';
+        }
+        $body = $body . '<p>IMEI: ' . $request['imei_number'] . '</p>';
+        $body = $body . '<p>Reason: ' . $request['unlock_reason'] . '</p>';
+        if(isset($request['other_reason'])){
+            $body = $body . '<p>Other reason: ' . $request['other_reason'] . '</p>';
+        }
+        	
+        $this->sendMail($options['recipients'], 'Web Content <no-reply@eachandother.com>', $subject, null, $body);
+    }
+
+    function createCSV($filename, $filepath, $data, $name) {
+        $fp = fopen($filepath, 'w');
+        if ($fp !== false) {
+            // Write all the values to file
+            foreach($data as $value) {
+                fputcsv($fp, $value[$name], ',', '"');
+            }
+
+            // Close the file pointer
+            $success = true;
+            fclose($fp);
+        }
+    }
+
+    function sendMail($recipients, $sender, $subject, $attachmentPath, $body) {
+        if($recipients){
+            foreach($recipients as $person) {
+                $person = $person['ExportRecipient'];
+                $this->Email->to = $person['email'];
+                $this->Email->subject = $subject;
+                $this->Email->from = $sender;
+                $this->Email->sendAs = 'html';
+                if (isset($attachmentPath) && $attachmentPath != null) {
+                    $this->Email->attachments = array($attachmentPath);
+                    $this->Email->send();
+                }
+                if (isset($body) && $body != null) {
+                    $this->Email->send($body);
+                }
+                $this->Email->reset();
+            }
+        }
+    }
+}
+
+?>

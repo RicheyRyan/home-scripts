@@ -1,0 +1,101 @@
+.js-hover {
+    $submenu-width: 100%;
+    $item-offset: 20px;
+    position: relative;
+    background-color: $lightgrey;
+    margin-bottom: 0;
+
+    &__link{
+        overflow: visible;
+        position: relative;
+        padding: 20px $item-offset+20 20px $item-offset;
+        display: block;
+        @include transition(background .2s);
+
+        .chevron{
+            @include chevron($darkblue, down);
+            right: 20px;
+            bottom: 40%;
+        }
+
+        &:hover,
+        &--active{
+            outline: none;
+            background: $mediumblue;
+            & + .js-hover__submenu{
+                visibility: visible;
+            }
+
+            color: $white;
+
+            .chevron{
+                @include chevron($white, up);
+            }
+        }
+        &--no-hover + .js-hover__submenu .js-hover__submenu__close{
+            display: block;
+        }
+    }
+
+    &__menu-item{
+        position: relative;
+
+        &::after {
+            padding-left: 0.5em;
+        }
+    }
+
+    &__submenu{
+        padding: 40px 50px;
+        position: absolute;
+        background: #eee;
+        top: 100%;
+        z-index: 10;
+        display: block;
+        /* offset left and right padding */
+        width: calc(100% - 100px);
+        left: 0;
+        visibility: hidden;
+        @include transition(visibility 0.1s ease-in);
+
+        li{
+            display: block;
+            padding-right: 0;
+            margin-bottom: 15px;
+        }
+
+        h2{
+            margin-bottom: 45px;
+        }
+
+        a{
+            padding: 0;
+            color: $darkgrey;
+            display: inline-block;
+            text-align: right;
+            width: 100%;
+            text-align: left;
+            width: $submenu-width;
+            &:hover{
+                color: $darkblue;
+            }
+        }
+
+        &__close{
+            margin-top: 20px;
+            display: none;
+        }
+    }
+}
+
+.layout-overlay{
+    &--nav-active{
+        .layout-overlay{
+            &:before{
+                visibility: visible;
+                background: rgba(0,0,0, 0.5);
+            }
+        }
+    }
+}
+
