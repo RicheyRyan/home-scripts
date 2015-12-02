@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
- eval-buffer
- tetris
- web-beautify-html
- string-insert-rectangle
- replace-string
- web-mode
  web-beautify-js
+ web-beautify-html
+ make-directory
+ list-packages
+ css-mode
+ profiler-start
+ toggle-word-wrap
 )
 
 ;; ----- smex-data -----
@@ -15,7 +15,7 @@
  (package-list-packages . 1)
  (eval-buffer . 11)
  (gofmt . 1)
- (web-beautify-js . 200)
+ (web-beautify-js . 248)
  (web-mode . 22)
  (replace-string . 77)
  (flush-lines . 34)
@@ -31,8 +31,8 @@
  (nyan-start-animation . 1)
  (delete-window . 3)
  (scss-mode . 2)
- (web-beautify-html . 63)
- (list-packages . 35)
+ (web-beautify-html . 77)
+ (list-packages . 39)
  (web-mode-reload . 2)
  (customize-themes . 1)
  (compile . 53)
@@ -50,4 +50,12 @@
  (ns-popup-font-panel . 2)
  (wl-thread-save . 1)
  (string-insert-rectangle . 1)
+ (toggle-read-only . 1)
+ (read-only-mode . 2)
+ (php-mode . 1)
+ (toggle-word-wrap . 2)
+ (profiler-start . 1)
+ (css-mode . 1)
+ (profiler-report . 2)
+ (make-directory . 3)
 )
