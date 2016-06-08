@@ -1,0 +1,1 @@
+(define-package "web-beautify" "20160410.1005" "Format HTML, CSS and JavaScript/JSON by js-beautify" 'nil :stars '(#("100" 0 3 (font-lock-face paradox-star-face))) :url "https://github.com/yasuyk/web-beautify")

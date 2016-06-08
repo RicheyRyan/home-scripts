@@ -1,0 +1,1 @@
+(define-package "rustfmt" "20160217.542" "Format rust code using rustfmt" '((emacs "24")) :stars '(#("12" 0 2 (font-lock-face paradox-star-face))) :url "https://github.com/fbergroth/emacs-rustfmt" :keywords '("convenience"))

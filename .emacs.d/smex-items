@@ -1,25 +1,25 @@
 
 ;; ----- smex-history -----
 (
- web-beautify-js
- web-beautify-html
+ paradox-upgrade-packages
+ replace-string
  make-directory
- list-packages
- css-mode
- profiler-start
- toggle-word-wrap
+ json-mode-beautify
+ dired
+ eval-buffer
+ web-beautify-js
 )
 
 ;; ----- smex-data -----
 (
  (package-list-packages . 1)
- (eval-buffer . 11)
- (gofmt . 1)
- (web-beautify-js . 248)
+ (eval-buffer . 18)
+ (gofmt . 45)
+ (web-beautify-js . 284)
  (web-mode . 22)
- (replace-string . 77)
+ (replace-string . 98)
  (flush-lines . 34)
- (package-install . 5)
+ (package-install . 8)
  (sass-mode . 1)
  (calc . 1)
  (web-mode-element-end . 1)
@@ -31,8 +31,8 @@
  (nyan-start-animation . 1)
  (delete-window . 3)
  (scss-mode . 2)
- (web-beautify-html . 77)
- (list-packages . 39)
+ (web-beautify-html . 86)
+ (list-packages . 40)
  (web-mode-reload . 2)
  (customize-themes . 1)
  (compile . 53)
@@ -44,18 +44,42 @@
  (cider-jack-in . 3)
  (tetris . 2)
  (eshell . 1)
- (js2-mode . 2)
+ (js2-mode . 3)
  (package-menu-mark-upgrades . 1)
  (json-mode . 2)
  (ns-popup-font-panel . 2)
  (wl-thread-save . 1)
  (string-insert-rectangle . 1)
  (toggle-read-only . 1)
- (read-only-mode . 2)
+ (read-only-mode . 3)
  (php-mode . 1)
  (toggle-word-wrap . 2)
  (profiler-start . 1)
  (css-mode . 1)
  (profiler-report . 2)
- (make-directory . 3)
+ (make-directory . 4)
+ (multi-term . 9)
+ (multi-term-next . 1)
+ (lgrep . 3)
+ (golint . 1)
+ (rust-mode . 1)
+ (rustfmt-format-buffer . 3)
+ (paradox-upgrade-packages . 23)
+ (flycheck-tip-cycle . 5)
+ (paradox-list-packages . 1)
+ (flycheck-display-error-at-point . 2)
+ (flycheck-error-list-mode . 1)
+ (ac-start . 1)
+ (ac-expand . 2)
+ (2048-game . 1)
+ (4clojure-open-question . 2)
+ (4clojure-check-answers . 5)
+ (4clojure-next-question . 5)
+ (basic-save-buffer . 1)
+ (set-file-modes . 1)
+ (fundamental-mode . 1)
+ (undo . 7)
+ (recover-file . 1)
+ (dired . 1)
+ (json-mode-beautify . 1)
 )

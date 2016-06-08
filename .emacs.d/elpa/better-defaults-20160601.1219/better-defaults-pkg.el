@@ -1,0 +1,1 @@
+(define-package "better-defaults" "20160601.1219" "Fixing weird quirks and poor defaults" 'nil :stars '(#("396" 0 3 (font-lock-face paradox-star-face))) :url "https://github.com/technomancy/better-defaults" :keywords '("convenience"))

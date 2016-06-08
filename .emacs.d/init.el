@@ -1,5 +1,8 @@
-;;;; To-do: Write macro for (add-to-list 'auto-mode-alist ...)
+;;;; package --- My init.el
 
+;;;; Commentary:
+
+;;;; Code:
 (when (>= emacs-major-version 24)
   ;;;; Require package repos
   (require 'package)
@@ -9,14 +12,16 @@
   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 
   ;; store all backup and autosave files in the tmp dir
-  (setq backup-directory-alist
-        `((".*" . ,temporary-file-directory)))
-  (setq auto-save-file-name-transforms
-              `((".*" ,temporary-file-directory t)))
+  (defvar backup-directory-alist
+    `((".*" . ,temporary-file-directory)))
+  (defvar auto-save-file-name-transforms
+    `((".*" ,temporary-file-directory t)))
+  (setq create-lockfiles nil)
 
   ;;;; Setup company mode
   (add-hook 'after-init-hook 'global-company-mode)
-    
+  (defvar company-dabbrev-downcase nil)
+  
   ;;;; Enable line numbers
   (global-linum-mode t)
 
@@ -34,7 +39,7 @@
   (setq exec-path (append exec-path '("/usr/local/bin/css-beautify")))
 
   (setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin/html-beautify"))
-  (setq exec-path (append exec-path '("/usr/local/bin/html-beautify")))  
+  (setq exec-path (append exec-path '("/usr/local/bin/html-beautify")))
 
   ;;;; Add Go utilities to path
   (setenv "GOPATH" (concat (getenv "GOPATH") ":/Users/richeyryan/go"))
@@ -45,13 +50,13 @@
 
   (defun go-mode-setup ()
     (go-eldoc-setup)
-    (setq gofmt-command "goimports")
+    (defvar gofmt-command "goimports")
     (add-hook 'before-save-hook 'gofmt-before-save))
   (add-hook 'go-mode-hook 'go-mode-setup)
 
   ;;;; Make m-3 output # on OSX
   (when (eq system-type 'darwin)
-    (global-set-key (kbd "M-3") '(lambda () (interactive) (insert "#"))))  
+    (global-set-key (kbd "M-3") '(lambda () (interactive) (insert "#"))))
 
   ;;;; Disable the damn alarms!
   (setq ring-bell-function 'ignore)
@@ -70,36 +75,31 @@
   (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.ctp\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.tpl?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.swig?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.ss?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.sass?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.scss?\\'" . web-mode))
+  
+  (add-to-list 'auto-mode-alist '("\\.js?\\'" . js2-mode))
+  (setq web-mode-enable-auto-pairing t)
+  (setq web-mode-css-indent-offset 2)
 
-  ;;;; Setup scss mode
-  ;;(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
-
-  ;;;; Setup js2 mode
-  ;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-  ;(add-hook 'js2-mode-hook 'ac-js2-mode)
-  ;(setq js2-highlight-level 3)
 
   ;;;; Enable paredit mode
   (defun my-paredit-nonlisp ()
     "Turn on paredit mode for non-lisps."
     (interactive)
-    (set (make-local-variable 'paredit-space-for-delimiter-predicates)
+    (set (defvar 'paredit-space-for-delimiter-predicates)
          '((lambda (endp delimiter) nil)))
     (paredit-mode 1))
-  ;; (add-hook 'web-mode-hook 'my-paredit-non-lisp)
-  ;; (define-key web-mode-map "{" 'paredit-open-curly)
-  ;; (define-key web-mode-map "}" 'paredit-close-curly-and-newline)
-
+  
   ;;;; Setup tern
-  (add-hook 'js-mode-hook (lambda () (tern-mode t)))
-  (eval-after-load 'tern
-   '(progn
-      (require 'tern-auto-complete)
-      (tern-ac-setup)))
+  ;; (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+  ;; (eval-after-load 'tern
+  ;;   '(progn
+  ;;      (require 'tern-auto-complete)
+  ;;      (tern-ac-setup)))
   
   ;;;; Setup smex
   (smex-initialize)
@@ -108,32 +108,63 @@
   ;; Old M-x.
   (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
-  ;;;; Setup nyan-mode
-  ;(add-to-list 'auto-mode-alist '("\\.*\\'" . nyan-mode))
-  )
-
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (monokai))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(custom-enabled-themes (quote (monokai)))
+   '(paradox-github-token t))
+  (custom-set-faces
+   ;; custom-set-faces was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   )
 
 ;;;; Wanderlust setup
-(autoload 'wl "wl" "Wanderlust" t)
+  (autoload 'wl "wl" "Wanderlust" t)
 
-;;;; JS linting
-(require 'flycheck)
-(add-hook 'web-mode-hook
-          (lambda () (flycheck-mode t)))
+  ;; ;;;; JS linting
+  ;;(add-hook 'after-init-hook #'global-flycheck-mode)
+  ;;(defvar flycheck-check-syntax-automatically '(mode-enabled idle-change))
 
-(eval-after-load 'web-mode
-  '(define-key web-mode-map (kbd "C-c b") 'web-beautify-js))
+  ;;(add-hook 'js2-mode-hook 'flycheck-mode)
+
+  ;; (eval-after-load 'js2-mode
+  ;;   '(define-key js-mode-map (kbd "C-c b") 'web-beautify-js))
+
+  (defun indent-js-buffer ()
+    "Indents an entire buffer using the default intenting scheme."
+    (web-beautify-js)                     
+    (interactive)
+    (point-to-register 'o)
+    (delete-trailing-whitespace)
+    (delete-trailing-lines)
+    (untabify (point-min) (point-max))
+    (jump-to-register 'o))                  
+
+  (eval-after-load 'js2-mode
+    '(add-hook 'js2-mode-hook
+               (lambda ()
+                 (add-hook 'before-save-hook 'indent-js-buffer t t))))
+
+;;;; Autocomplete
+  (ac-config-default))
+
+;;;; Magit
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
+
+;;;; Clojure mode
+(add-hook 'clojure-mode-hook #'paredit-mode)
+(add-hook 'clojure-mode-hook #'smartparens-strict-mode)
+(add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
+(add-hook 'clojure-mode-hook #'aggressive-indent-mode)
+
+;;;; Disable tern files
+;;;; (setq tern-command (append tern-command '("--no-port-file")))
+
+;;; init.el ends here
+
 
