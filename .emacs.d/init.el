@@ -26,7 +26,7 @@
   (global-linum-mode t)
 
   ;;;; Set colour scheme
-  (load-theme 'leuven t)
+  (load-theme 'solarized-light t)
 
   ;;;; No tabs
   (setq-default indent-tabs-mode nil)
@@ -121,21 +121,18 @@
    ;; If there is more than one, they won't work right.
    )
 
-;;;; Wanderlust setup
+  ;;;; Wanderlust setup
   (autoload 'wl "wl" "Wanderlust" t)
 
-  ;; ;;;; JS linting
-  ;;(add-hook 'after-init-hook #'global-flycheck-mode)
-  ;;(defvar flycheck-check-syntax-automatically '(mode-enabled idle-change))
-
-  ;;(add-hook 'js2-mode-hook 'flycheck-mode)
-
-  ;; (eval-after-load 'js2-mode
-  ;;   '(define-key js-mode-map (kbd "C-c b") 'web-beautify-js))
-
+  (defun indent-buffer ()
+    (interactive)
+    (save-excursion
+      (indent-region (point-min) (point-max) nil)))
+  
+  ;;;; JS linting
   (defun indent-js-buffer ()
     "Indents an entire buffer using the default intenting scheme."
-    (web-beautify-js)                     
+    (indent-buffer)
     (interactive)
     (point-to-register 'o)
     (delete-trailing-whitespace)
@@ -165,5 +162,3 @@
 ;;;; (setq tern-command (append tern-command '("--no-port-file")))
 
 ;;; init.el ends here
-
-

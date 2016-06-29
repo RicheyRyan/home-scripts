@@ -1,19 +1,19 @@
 
 ;; ----- smex-history -----
 (
+ eval-buffer
  paradox-upgrade-packages
  replace-string
  web-beautify-html
  handlebars-mode
  locate
  locate-with-filter
- find-dired
 )
 
 ;; ----- smex-data -----
 (
  (package-list-packages . 1)
- (eval-buffer . 23)
+ (eval-buffer . 24)
  (gofmt . 45)
  (web-beautify-js . 284)
  (web-mode . 22)
