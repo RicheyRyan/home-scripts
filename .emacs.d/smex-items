@@ -3,21 +3,21 @@
 (
  paradox-upgrade-packages
  replace-string
- make-directory
- json-mode-beautify
- dired
- eval-buffer
- web-beautify-js
+ web-beautify-html
+ handlebars-mode
+ locate
+ locate-with-filter
+ find-dired
 )
 
 ;; ----- smex-data -----
 (
  (package-list-packages . 1)
- (eval-buffer . 18)
+ (eval-buffer . 23)
  (gofmt . 45)
  (web-beautify-js . 284)
  (web-mode . 22)
- (replace-string . 98)
+ (replace-string . 184)
  (flush-lines . 34)
  (package-install . 8)
  (sass-mode . 1)
@@ -31,10 +31,10 @@
  (nyan-start-animation . 1)
  (delete-window . 3)
  (scss-mode . 2)
- (web-beautify-html . 86)
+ (web-beautify-html . 87)
  (list-packages . 40)
  (web-mode-reload . 2)
- (customize-themes . 1)
+ (customize-themes . 6)
  (compile . 53)
  (wl . 10)
  (markdown-preview . 22)
@@ -57,16 +57,16 @@
  (profiler-start . 1)
  (css-mode . 1)
  (profiler-report . 2)
- (make-directory . 4)
+ (make-directory . 7)
  (multi-term . 9)
  (multi-term-next . 1)
  (lgrep . 3)
  (golint . 1)
  (rust-mode . 1)
  (rustfmt-format-buffer . 3)
- (paradox-upgrade-packages . 23)
+ (paradox-upgrade-packages . 31)
  (flycheck-tip-cycle . 5)
- (paradox-list-packages . 1)
+ (paradox-list-packages . 4)
  (flycheck-display-error-at-point . 2)
  (flycheck-error-list-mode . 1)
  (ac-start . 1)
@@ -80,6 +80,11 @@
  (fundamental-mode . 1)
  (undo . 7)
  (recover-file . 1)
- (dired . 1)
+ (dired . 2)
  (json-mode-beautify . 1)
+ (find-name-dired . 1)
+ (find-dired . 1)
+ (locate-with-filter . 3)
+ (locate . 2)
+ (handlebars-mode . 1)
 )

@@ -26,7 +26,7 @@
   (global-linum-mode t)
 
   ;;;; Set colour scheme
-  (load-theme 'monokai t)
+  (load-theme 'leuven t)
 
   ;;;; No tabs
   (setq-default indent-tabs-mode nil)
@@ -113,7 +113,6 @@
    ;; If you edit it by hand, you could mess it up, so be careful.
    ;; Your init file should contain only one such instance.
    ;; If there is more than one, they won't work right.
-   '(custom-enabled-themes (quote (monokai)))
    '(paradox-github-token t))
   (custom-set-faces
    ;; custom-set-faces was added by Custom.
