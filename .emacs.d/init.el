@@ -19,8 +19,8 @@
   (setq create-lockfiles nil)
 
   ;;;; Setup company mode
-  (add-hook 'after-init-hook 'global-company-mode)
-  (defvar company-dabbrev-downcase nil)
+  ;; (add-hook 'after-init-hook 'global-company-mode)
+  ;; (defvar company-dabbrev-downcase nil)
   
   ;;;; Enable line numbers
   (global-linum-mode t)
@@ -84,7 +84,11 @@
   (add-to-list 'auto-mode-alist '("\\.js?\\'" . js2-mode))
   (setq web-mode-enable-auto-pairing t)
   (setq web-mode-css-indent-offset 2)
+  (setq web-mode-js-indent-offset 2)
+  (setq web-mode-markup-indent-offset 2)
 
+  (setq web-mode-content-types-alist
+        '(("jsx" . "\\.js[x]?\\'")))
 
   ;;;; Enable paredit mode
   (defun my-paredit-nonlisp ()
@@ -140,8 +144,8 @@
     (untabify (point-min) (point-max))
     (jump-to-register 'o))                  
 
-  (eval-after-load 'js2-mode
-    '(add-hook 'js2-mode-hook
+  (eval-after-load 'web-mode
+    '(add-hook 'web-mode-hook
                (lambda ()
                  (add-hook 'before-save-hook 'indent-js-buffer t t))))
 
@@ -160,5 +164,12 @@
 
 ;;;; Disable tern files
 ;;;; (setq tern-command (append tern-command '("--no-port-file")))
+
+;; js2-mode to use spaces instead of tabs
+(setq js2-mode-hook
+      '(lambda () (progn
+                    (set-variable 'indent-tabs-mode nil))))
+
+(setq-default js2-basic-offset 2)
 
 ;;; init.el ends here
