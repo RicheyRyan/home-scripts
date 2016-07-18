@@ -32,6 +32,7 @@ set textwidth=100
 set clipboard=unnamed
 set history=1000 " Store lots of :cmdline history
 set autoread
+set nowrap
 
 " Tabs and extra whitespace are evil, so let's highlight them with some fun characters.
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
@@ -138,8 +139,8 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-" Use Neomake
-" autocmd! BufWritePost,BufEnter * Neomake
-" let g:neomake_javascript_enabled_makers = ['eslint']
-" let g:neomake_verbose=3
-" let g:neomake_logfile='~/neomake.log'
+" Syntastic setup
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
