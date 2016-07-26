@@ -10,9 +10,9 @@ export PATH=~/.local/bin:$PATH
 alias git=hub
 
 #Add bash completion
-# if [ -f $(brew --prefix)/etc/bash_completion ]; then
-#     . $(brew --prefix)/etc/bash_completion
-# fi
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
 
 #Add current git branch to prompt
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
