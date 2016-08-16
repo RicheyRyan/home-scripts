@@ -121,7 +121,7 @@ endfun
 
 " format the entire file
 nnoremap <leader>f :call <SID>formatBuffer()<CR>
-autocmd BufWritePre * :call <SID>formatBuffer()
+autocmd BufWritePre * :retab :call <SID>formatBuffer()
 
 " Plug related keybindings
 nnoremap <Leader>pu :PlugUpdate<CR>
