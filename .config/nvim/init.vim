@@ -119,6 +119,8 @@ fun! <SID>formatBuffer()
   call cursor(l, c)
 endfun
 
+autocmd BufWritePre * %s/\s\+$//e
+
 " format the entire file
 nnoremap <leader>f :call <SID>formatBuffer()<CR>
 autocmd BufWritePre * :retab :call <SID>formatBuffer()
