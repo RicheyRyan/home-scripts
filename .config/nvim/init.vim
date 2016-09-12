@@ -10,6 +10,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'othree/html5.vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'kien/rainbow_parentheses.vim'
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
@@ -153,3 +154,8 @@ autocmd! BufWritePost * Neomake
 let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
 let g:NERDTrimTrailingWhitespace = 1
+
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
