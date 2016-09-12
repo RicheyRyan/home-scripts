@@ -9,6 +9,7 @@ Plug 'helino/vim-json'
 Plug 'pangloss/vim-javascript'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'othree/html5.vim'
+Plug 'scrooloose/nerdcommenter'
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
@@ -32,6 +33,7 @@ set clipboard=unnamed
 set history=1000 " Store lots of :cmdline history
 set autoread
 set nowrap
+filetype plugin on
 
 " Tabs and extra whitespace are evil, so let's highlight them with some fun characters.
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
@@ -140,10 +142,9 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-" Syntastic setup
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_error_symbol = "✗"
-" let g:syntastic_warning_symbol = "⚠"
-
 autocmd! BufWritePost * Neomake
+
+" NERDCommenter stuff
+let g:NERDSpaceDelims = 1
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
