@@ -3,8 +3,9 @@ set -o emacs
 
 #Path stuff
 #Add brew install path to PATH
-export PATH="/usr/local/bin:$PATH"
+export PATH=/usr/local/bin:$PATH
 export PATH=~/.local/bin:$PATH
+export PATH=~/.cargo/bin:$PATH
 
 #Hub alias
 alias git=hub

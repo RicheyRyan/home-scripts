@@ -14,6 +14,9 @@ function! DoRemote(arg)
 endfunction
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+
+" Non web plugins
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 " # Configure Basic Editor Options
@@ -132,16 +135,12 @@ nnoremap <Leader>pc :PlugClean<CR>
 " ES6 Stuff
 let g:jsx_pragma_required=0
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-let g:syntastic_javascript_checkers = ['eslint']
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-" Syntastic setup
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_error_symbol = "✗"
-" let g:syntastic_warning_symbol = "⚠"
+" Rust settings
+let g:rustfmt_autosave = 1
 
 autocmd! BufWritePost * Neomake
