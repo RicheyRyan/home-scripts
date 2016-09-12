@@ -9,6 +9,7 @@ Plug 'helino/vim-json'
 Plug 'pangloss/vim-javascript'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'othree/html5.vim'
+Plug 'scrooloose/nerdcommenter'
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
@@ -35,6 +36,7 @@ set clipboard=unnamed
 set history=1000 " Store lots of :cmdline history
 set autoread
 set nowrap
+filetype plugin on
 
 " Tabs and extra whitespace are evil, so let's highlight them with some fun characters.
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
@@ -122,6 +124,8 @@ fun! <SID>formatBuffer()
   call cursor(l, c)
 endfun
 
+autocmd BufWritePre * %s/\s\+$//e
+
 " format the entire file
 nnoremap <leader>f :call <SID>formatBuffer()<CR>
 autocmd BufWritePre * :retab :call <SID>formatBuffer()
@@ -144,3 +148,8 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 let g:rustfmt_autosave = 1
 
 autocmd! BufWritePost * Neomake
+
+" NERDCommenter stuff
+let g:NERDSpaceDelims = 1
+let g:NERDCommentEmptyLines = 1
+let g:NERDTrimTrailingWhitespace = 1
