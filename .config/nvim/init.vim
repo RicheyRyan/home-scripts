@@ -11,6 +11,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'othree/html5.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'justinmk/vim-sneak'
 function! DoRemote(arg)
   UpdateRemotePlugins
 endfunction
