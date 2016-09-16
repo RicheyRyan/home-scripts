@@ -108,6 +108,7 @@ nnoremap <Leader>rc :source $MYVIMRC<CR>
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>bl :buffers<CR>
+let g:ctrlp_show_hidden = 1
 
 " Windows
 nnoremap <Leader>nw :vnew<CR>
@@ -142,6 +143,7 @@ nnoremap <Leader>pc :PlugClean<CR>
 " ES6 Stuff
 let g:jsx_pragma_required=0
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+au BufRead,BufNewFile *.es6 set filetype=javascript
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
