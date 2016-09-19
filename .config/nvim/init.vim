@@ -135,7 +135,7 @@ autocmd BufWritePre * :retab :call <SID>formatBuffer()
 
 " Plug related keybindings
 nnoremap <Leader>pu :PlugUpdate<CR>
-nnoremap <leader>pu :plugupgrade<cr>
+nnoremap <leader>pU :PlugUpgrade<cr>
 nnoremap <leader>pr :UpdateRemotePlugins<cr>
 nnoremap <Leader>pc :PlugClean<CR>
 
