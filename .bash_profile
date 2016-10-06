@@ -27,7 +27,7 @@ export EDITOR="/usr/local/bin/nvim"
 export PGDATA="/usr/local/var/postgres/"
 
 #Homebrew alias
-alias brewup="brew update && brew upgrade --all"
+alias brewup="brew update && brew upgrade"
 
 ## Colorize the ls output ##
 alias ls='ls -G'
