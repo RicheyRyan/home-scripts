@@ -24,7 +24,7 @@ call plug#end()
 
 " # Configure Basic Editor Options
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set background=light " or dark
+set background=dark
 colorscheme solarized
 syntax on
 set number
