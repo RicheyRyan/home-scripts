@@ -24,6 +24,7 @@ call plug#end()
 
 " # Configure Basic Editor Options
 syntax on
+set termguicolors
 set number
 set gdefault
 set incsearch
