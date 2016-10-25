@@ -1,0 +1,12 @@
+[user]
+  name = RicheyRyan
+  password = n00091244
+[filter "media"]
+  clean = git-media-clean %f
+  smudge = git-media-smudge %f
+[push]
+  default = simple
+[core]
+  excludesfile = /Users/richeyryan/.gitignore
+[credential]
+  helper = osxkeychain
